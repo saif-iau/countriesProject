@@ -1,0 +1,70 @@
+<!-- Angular Template -->
+<div class="container">
+  @if (country()?.name) {
+    <button class="dark-mode-btn" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
+
+    <div class="content-row">
+      <div class="flag">
+        <img 
+          [src]="country()?.flags?.svg" 
+          [alt]="country()?.name + ' flag'" 
+          loading="lazy"
+        />
+      </div>
+
+      <div class="details">
+        <h2>{{ country()?.name }}</h2>
+
+        <div class="info-columns">
+          <div class="column">
+            <p><strong>Native Name:</strong> {{ country()?.nativeName || 'N/A' }}</p>
+            <p><strong>Population:</strong> {{ (country()?.population) }}</p>
+            <p><strong>Region:</strong> {{ country()?.region || 'N/A' }}</p>
+            <p><strong>Sub Region:</strong> {{ country()?.subregion || 'N/A' }}</p>
+            <p><strong>Capital:</strong> {{ country()?.capital || 'N/A' }}</p>
+          </div>
+
+          <div class="column">
+            <p><strong>Top Level Domain:</strong> {{ country()?.topLevelDomain?.join(', ') || 'N/A' }}</p>
+            <p><strong>Currency:</strong> {{ formatCurrencies(country()?.currencies ?? []) }}</p>
+            <p><strong>Languages:</strong> {{ formatLanguages(country()?.languages ?? []) }}</p>
+          </div>
+        </div>
+
+        @if (borderCountries && borderCountries.length > 0) {
+          <div class="borders">
+            <strong>Border Countries:</strong>
+            <div class="border-list">
+              @for (borderCountry of borderCountries; track borderCountry.alpha3Code) {
+                <a
+                  class="border-item"
+                  [routerLink]="['/details', borderCountry.name]"
+                  [title]="borderCountry.name"
+                  [attr.aria-label]="'View details for ' + borderCountry.name"
+                >
+                  <img
+                    [src]="borderCountry.flags.svg"
+                    [alt]="borderCountry.name + ' flag'"
+                    class="flag-icon"
+                    loading="lazy"
+                  />
+                </a>
+              }
+            </div>
+          </div>
+        } @else {
+          <div class="borders">
+            <strong>Border Countries:</strong>
+            <p>No border countries</p>
+          </div>
+        }
+      </div>
+    </div>
+  } @else {
+    <div class="loading">
+      <i class="fas fa-spinner fa-spin"></i> Loading country details...
+    </div>
+  }
+</div>

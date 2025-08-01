@@ -1,0 +1,23 @@
+<div class="filters">
+  <input
+    type="text"
+    placeholder="Search by name"
+    (input)="searchQuery.set($any($event.target).value)"
+  />
+
+  <select (change)="selectedRegion.set($any($event.target).value)">
+    <option value="">All Regions</option>
+    <option value="Asia">Asia</option>
+    <option value="Europe">Europe</option>
+    <option value="Africa">Africa</option>
+    <option value="Americas">Americas</option>
+    <option value="Oceania">Oceania</option>
+  </select>
+</div>
+
+
+<div class="grid-container">
+  @for (country of filteredCountries(); track country) {
+    <app-card [details]="country" />
+  }
+</div>

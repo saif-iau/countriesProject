@@ -1,0 +1,17 @@
+<a
+  [routerLink]="['/details', details()?.name]" 
+  class="card-link"
+>
+
+  <div class="country-card">
+  <img [src]="details()?.flags?.svg" alt="Flag of {{ details()?.name }}" class="flag" />
+  
+  <div class="card-content">
+    <h3>{{ details()?.name }}</h3>
+    <h5>Population: {{ details()?.population  }}</h5>
+    <h5>Region: {{ details()?.region }}</h5>
+    <h5>Capital: {{ details()?.capital }}</h5>
+  </div>
+</div>
+
+</a>
