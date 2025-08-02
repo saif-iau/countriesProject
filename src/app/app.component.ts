@@ -11,5 +11,5 @@ import { DetailsComponent } from "./components/details/details.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'countriesProject';
+  title = 'countriesProject ';
 }
