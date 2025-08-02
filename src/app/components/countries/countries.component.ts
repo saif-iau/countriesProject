@@ -2,6 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { Country } from '../../country.model';
 import { HttpClient } from '@angular/common/http';
 import { CardComponent } from "../card/card.component";
+import { CountriesService } from '../../countries.service';
 
 @Component({
   selector: 'app-countries',
@@ -12,17 +13,18 @@ import { CardComponent } from "../card/card.component";
 export class CountriesComponent {
 
   private http = inject(HttpClient);
-
+  private countriesService = inject(CountriesService)
   countries = signal<Country[]>([]);
 
 
 
 
   ngOnInit(): void {
-    this.http.get<Country[]>('assets/data.json').subscribe(data => {
+    this.countriesService.getCountries().subscribe(data => {
       this.countries.set(data);
     });
   }
+
 
 
   searchQuery = signal('');

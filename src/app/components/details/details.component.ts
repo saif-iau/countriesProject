@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, signal } from '@angular/core';
+import { Component, Inject, inject, PLATFORM_ID, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Country, Currency, Language } from '../../country.model';
+import { isPlatformBrowser } from '@angular/common';
+import { CountriesService } from '../../countries.service';
 
 @Component({
   selector: 'app-details',
@@ -16,20 +18,28 @@ export class DetailsComponent {
   allCountries: Country[] = [];
 
   country = signal<Country | null>(null)
-
-  constructor(private router: Router) { }
-
-ngOnInit() {
-  this.route.paramMap.subscribe(params => {
-    const name = params.get('name');
-
-    this.http.get<Country[]>('assets/data.json').subscribe(data => {
+  constructor(
+    private router: Router,
+    private countriesService: CountriesService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
+  ngOnInit() {
+    this.countriesService.getCountries().subscribe(data => {
       this.allCountries = data;
-      const found = data.find(c => c.name === name);
-      this.country.set(found ?? null);
+
+      this.route.paramMap.subscribe(params => {
+        const name = decodeURIComponent(params.get('name') ?? '');
+        const found = this.countriesService.getCountryByName(name);
+
+
+        found.subscribe(country => this.country.set(country ?? null));
+
+
+      });
     });
-  });
-}
+  }
+
+
 
 
 

@@ -24,8 +24,6 @@ export const appConfig: ApplicationConfig = {
   
   
   
-  
-    provideClientHydration(withEventReplay()),
     provideAnimations(),
     provideHttpClient(),
 

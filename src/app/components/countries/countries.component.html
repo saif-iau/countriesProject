@@ -1,4 +1,5 @@
-<div class="filters">
+@if(filteredCountries() !== undefined){
+  <div class="filters">
   <input
     type="text"
     placeholder="Search by name"
@@ -21,3 +22,4 @@
     <app-card [details]="country" />
   }
 </div>
+}

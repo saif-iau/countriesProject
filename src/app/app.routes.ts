@@ -4,7 +4,7 @@ import { DetailsComponent } from './components/details/details.component';
 
 export const routes: Routes = [
     { path: '', component: CountriesComponent },
-  { path: 'details/:name', component: DetailsComponent },
+  { path: 'details/:name', component: DetailsComponent  },
     { path: '**', redirectTo: '' }
 
 ];
