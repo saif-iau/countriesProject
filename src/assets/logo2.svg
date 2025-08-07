@@ -1,0 +1,22 @@
+<svg width="120" height="100" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient definition -->
+  <defs>
+    <radialGradient id="globeGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#81D4FA" />
+      <stop offset="100%" stop-color="#0288D1" />
+    </radialGradient>
+  </defs>
+
+  <!-- Globe -->
+  <circle cx="60" cy="50" r="30" fill="url(#globeGradient)" stroke="#B3E5FC" stroke-width="2"/>
+
+  <!-- Longitude lines -->
+  <path d="M60 20 A30 30 0 0 0 60 80" stroke="#E1F5FE" stroke-width="1" fill="none"/>
+  <path d="M50 20 A30 30 0 0 1 70 80" stroke="#E1F5FE" stroke-width="1" fill="none"/>
+  <path d="M40 30 A30 20 0 0 0 80 70" stroke="#E1F5FE" stroke-width="1" fill="none"/>
+
+  <!-- Stars -->
+  <circle cx="15" cy="15" r="1.2" fill="#FFFFFF"/>
+  <circle cx="100" cy="10" r="1.5" fill="#FFFFFF"/>
+  <circle cx="90" cy="80" r="1.4" fill="#FFFFFF"/>
+</svg>
