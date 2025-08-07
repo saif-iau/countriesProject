@@ -1,3 +1,12 @@
-<app-header></app-header>
+@if(splash()) 
+{
 
-<router-outlet></router-outlet>
+<app-splash></app-splash>
+    
+} @else {
+
+
+    <app-header></app-header>
+    
+    <router-outlet></router-outlet>
+}

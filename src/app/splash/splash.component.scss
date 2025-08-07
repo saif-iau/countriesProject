@@ -1,0 +1,41 @@
+.splash-screen {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to bottom, #0d47a1, #1976d2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeOut 1s ease-in-out 2s forwards;
+
+  img {
+    width: 280px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+    animation: slideUp 1s ease-in-out;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
